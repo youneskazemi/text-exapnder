@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { PropTypes } from "prop-types";
 
-const textStyle = {
-  paddingRight: "5px",
-};
-
 TextExpander.propTypes = {
   expandButtonText: PropTypes.string,
   className: PropTypes.string,
@@ -18,8 +14,8 @@ function TextExpander({
   children,
   expandButtonText = "Show more",
   className = "",
-  buttonColor,
-  collapsedNumWords = 65,
+  buttonColor = "#1f09cd",
+  collapsedNumWords = 10,
   collapseButtonText = "Show less",
   expanded = false,
 }) {
@@ -27,7 +23,7 @@ function TextExpander({
 
   return (
     <div className={className}>
-      <span style={textStyle}>
+      <span>
         {show ? children : `${children.slice(0, collapsedNumWords)}...`}
       </span>
       <Button color={buttonColor} onShow={() => setShow((prev) => !prev)}>
@@ -41,8 +37,10 @@ function Button({ children, color, onShow }) {
   const buttonStyle = {
     color,
     border: "none",
-    backgroundColor: "transparent",
+    backgroundColor: "none",
+    font: "inherit",
     cursor: "pointer",
+    marginLeft: "6px",
   };
   return (
     <button style={buttonStyle} onClick={onShow}>
