@@ -11,9 +11,9 @@ function TextExpander({
   buttonColor,
   collapsedNumWords = 65,
   collapseButtonText = "Show less",
-  expanded,
+  expanded = false,
 }) {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(expanded);
 
   return (
     <div className={className}>
